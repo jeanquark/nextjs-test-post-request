@@ -62,23 +62,23 @@ export default function Home() {
 	}
 
 	const testPostMethod4 = async () => {
-		console.log('testPostMethod4')
-		const data = {
-			name: 'jeanquark4',
+		try {
+			console.log('testPostMethod4')
+			const data = {
+				name: 'jeanquark4',
+			}
+			const response = await fetch('/api/test4/', {
+				method: 'POST',
+				headers: {
+					'Content-type': 'application/json',
+				},
+				body: JSON.stringify(data)
+			})
+			const json = await response.json()
+			console.log('json: ', json)
+		} catch (error) {
+			console.log('error: ', error)
 		}
-		const response: any = await fetch('/api/test4/', {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json',
-				'Access-Control-Allow-Origin': '*',
-				'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
-			},
-			body: JSON.stringify(data),
-			// agent: httpsAgent
-		})
-		console.log('response: ', response)
-		const json = await response.json()
-		console.log('json: ', json)
 	}
 
 	const testPostMethod5 = async () => {
@@ -192,9 +192,10 @@ export default function Home() {
 				<button onClick={() => testPostMethod1()}>testPostMethod1 (POST /jsonplaceholder)</button><br />
 				<button onClick={() => testPostMethod2()}>testPostMethod2 (GET api/hello)</button><br />
 				<button onClick={() => testPostMethod3()}>testPostMethod3 (POST api/test1)</button><br />
+				<button onClick={() => testPostMethod4()}>testPostMethod4 (POST api/test4)</button><br />
 
 				<br />
-				<h4>Last deployment: Friday 12:54</h4>
+				<h4>Last deployment: Friday 14:00</h4>
 			</main>
 
 
