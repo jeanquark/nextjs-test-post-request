@@ -132,3 +132,9 @@ jobs:
                     echo Last version: ${last_version}
                     echo Third last version: ${third_last_version}
                     echo Current version: ${current_version}
+                    rm -rf ./current
+                    ln -nsf ./releases/${current_version} ./current
+                    ls -al
+                    rm -rf ./releases/${third_last_version}
+                    pm2 list
+                    pm2 restart all
